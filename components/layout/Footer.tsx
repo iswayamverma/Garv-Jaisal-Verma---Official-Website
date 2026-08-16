@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { FOOTER_LINKS, SITE_NAME, SITE_TAGLINE } from "@/lib/constants";
+import { FOOTER_LINKS, LEGAL_LINKS, SITE_NAME, SITE_TAGLINE } from "@/lib/constants";
 import { socialLinks } from "@/data/social";
 
 const socialPlatforms = [
@@ -57,7 +57,19 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
           </p>
-          <p className="text-ash/70">{SITE_TAGLINE}</p>
+          <nav aria-label="Legal" className="flex flex-wrap items-center gap-x-2 gap-y-2">
+            {LEGAL_LINKS.map((link, index) => (
+              <span key={link.href} className="flex items-center gap-2">
+                {index > 0 ? <span className="text-ash/40">|</span> : null}
+                <Link
+                  href={link.href}
+                  className="transition-colors hover:text-ember focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember"
+                >
+                  {link.label}
+                </Link>
+              </span>
+            ))}
+          </nav>
         </div>
       </Container>
     </footer>

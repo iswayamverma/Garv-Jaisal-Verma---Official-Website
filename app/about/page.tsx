@@ -24,7 +24,6 @@ export default function AboutPage() {
       <SectionHeading eyebrow="About" title={artist.name} as="h1" />
 
       <MediaSlot
-        publicId={artist.profileImages?.[0] ?? artist.heroImage}
         alt={`${artist.name} portrait`}
         icon="portrait"
         label="Artist Photo"

@@ -23,3 +23,6 @@ export const FOOTER_LINKS = [
   { href: "/media", label: "Media" },
   { href: "/contact", label: "Contact" },
 ];
+export const LEGAL_LINKS = [
+  { href: "/terms", label: "Terms & Conditions" },
+];

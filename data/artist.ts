@@ -14,7 +14,6 @@ export const artist: ArtistProfile = {
   profession: ["Singer", "Composer", "Producer"],
   shortBio: "[SHORT_BIO]",
   longBio: "[LONG_BIO]",
-  // e.g. "garv/hero-portrait" once a real asset is uploaded to Cloudinary.
-  heroImage: undefined,
-  profileImages: [],
+  heroImage: "landing-page_nhc8p0",
+  profileImages: ["artist-potrait_bb437b"],
 };

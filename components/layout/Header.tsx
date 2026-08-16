@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -15,23 +15,40 @@ export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
 
   const hasUpcomingEvents = getUpcomingEvents(events).length > 0;
   const links = NAV_LINKS.filter((link) => !link.conditional || hasUpcomingEvents);
 
-const listenHref = socialLinks.spotify ?? "/music";
+  const listenHref = socialLinks.spotify ?? "/music";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
+    lastScrollY.current = window.scrollY;
+
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      setScrolled(currentY > 8);
+
+      // Ignore tiny jitters (e.g. iOS bounce scroll) so the header doesn't
+      // flicker; only react once the user has scrolled a meaningful amount.
+      const delta = currentY - lastScrollY.current;
+      if (Math.abs(delta) < 8) return;
+
+      // Never hide the header while it's within the first screen's worth
+      // of scroll (still over the Hero) or while the mobile menu is open.
+      if (currentY < 120 || open) {
+        setHidden(false);
+      } else {
+        setHidden(delta > 0);
+      }
+
+      lastScrollY.current = currentY;
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Close the mobile menu when a nav link is activated (handled via
-  // onClick on each link below) rather than via an effect keyed on
-  // pathname — avoids a setState-during-effect cascade for what is really
-  // a direct response to a click.
+  }, [open]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -52,8 +69,9 @@ const listenHref = socialLinks.spotify ?? "/music";
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-colors duration-300",
-        scrolled || open ? "bg-ink/95 backdrop-blur-sm" : "bg-transparent"
+        "sticky top-0 z-50 w-full transition-all duration-300 ease-out",
+        scrolled || open ? "bg-ink/95 backdrop-blur-sm" : "bg-transparent",
+        hidden && !open ? "-translate-y-full" : "translate-y-0"
       )}
     >
       <Container className="flex h-20 items-center justify-between">

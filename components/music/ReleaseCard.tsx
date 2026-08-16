@@ -13,6 +13,27 @@ export function ReleaseCard({ release }: { release: Release }) {
   const year = new Date(release.releaseDate).getFullYear();
   const listenUrl = primaryStreamingUrl(release);
 
+  if (release.type === "single") {
+    return (
+      <Link href={`/music/${release.slug}`} className="group flex flex-col gap-4">
+        <MediaSlot
+          publicId={release.artwork}
+          alt={`${release.title} artwork`}
+          icon="artwork"
+          label="Artwork"
+          aspect="square"
+          className="transition-opacity group-hover:opacity-90"
+        />
+        <div className="flex flex-col gap-1">
+          <h3 className="font-display text-xl text-paper">{release.title}</h3>
+          <p className="text-xs uppercase tracking-[0.16em] text-ash">
+            {Number.isNaN(year) ? "" : year} · {typeLabel[release.type]}
+          </p>
+        </div>
+      </Link>
+    );
+  }
+
   return (
     <article className="group flex flex-col gap-4">
       <MediaSlot
