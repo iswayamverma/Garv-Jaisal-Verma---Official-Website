@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — Tailwind v4 CSS-first configuration (PDD §4: "Do not
+ * generate a tailwind.config.js/.ts file"). Every variable below becomes a
+ * matching utility automatically (--color-ember → bg-ember/text-ember/etc,
+ * --font-display → font-display).
+ *
+ * Palette: a warm near-black stage/studio backdrop with a single muted
+ * antique-gold accent — deliberately warmer and more restrained than a
+ * bright neon/vermilion accent, closer to brass, tape saturation and
+ * amber stage lighting than to a "premium" gold cliché. Per PDD §9, this
+ * is a neutral fallback: swap `--color-ember` for a tone pulled from real
+ * artwork once it exists, and every button, link and focus ring updates
+ * with it.
+ */
+@theme {
+  --color-ink: #0b0a08;
+  --color-charcoal: #17140f;
+  --color-paper: #f4f0e6;
+  --color-ash: #8d8779;
+  --color-ember: #c9974c;
+  --color-ember-light: #ddb26f;
+  --color-ember-deep: #8f6b34;
+
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+
+  --breakpoint-xs: 375px;
+}
+
+@layer base {
+  * {
+    border-color: theme(--color-paper / 10%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Keeps focused/anchored content clear of the sticky header (WCAG 2.2
+       SC 2.4.11 — content must not be entirely hidden by fixed elements). */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-ember);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ember);
+    outline-offset: 4px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+
+  /* Numerals (track durations, event dates) get tabular mono figures so
+     lists stay aligned — a small nod to the "producer" side of the site. */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
