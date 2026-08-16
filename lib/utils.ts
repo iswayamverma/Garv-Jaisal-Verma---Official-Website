@@ -1,4 +1,5 @@
-import type { Release, LiveEvent, Track } from "@/types";
+
+import type { Release, LiveEvent, Track, FlattenedTrack } from "@/types";
 
 /**
  * Minimal class-name joiner. Deliberately hand-rolled instead of adding
@@ -93,6 +94,26 @@ export function getAllCredits(releases: Release[]) {
 
 export function sortTracks(tracks: Track[] = []): Track[] {
   return [...tracks].sort((a, b) => a.trackNumber - b.trackNumber);
+}
+/**
+ * Flattens every track across all releases into one list for the Music
+ * page's "Songs" tab — each track picks up its parent release's artwork,
+ * title, slug and date since Track itself carries none of that.
+ * Newest release first, tracks in their release's own order.
+ */
+export function getAllTracks(releases: Release[]): FlattenedTrack[] {
+  return [...releases]
+    .sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
+    .flatMap((release) =>
+      sortTracks(release.tracks).map((track) => ({
+        ...track,
+        releaseId: release.id,
+        releaseSlug: release.slug,
+        releaseTitle: release.title,
+        releaseArtwork: release.artwork,
+        releaseDate: release.releaseDate,
+      }))
+    );
 }
 
 /**

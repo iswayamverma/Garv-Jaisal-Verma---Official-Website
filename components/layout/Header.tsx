@@ -8,8 +8,8 @@ import { Container } from "@/components/ui/Container";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
 import { events } from "@/data/events";
-import { releases } from "@/data/releases";
-import { getUpcomingEvents, getCurrentRelease, primaryStreamingUrl, cn } from "@/lib/utils";
+import { getUpcomingEvents, cn } from "@/lib/utils";
+import { socialLinks } from "@/data/social";
 
 export function Header() {
   const pathname = usePathname();
@@ -19,8 +19,7 @@ export function Header() {
   const hasUpcomingEvents = getUpcomingEvents(events).length > 0;
   const links = NAV_LINKS.filter((link) => !link.conditional || hasUpcomingEvents);
 
-  const currentRelease = getCurrentRelease(releases);
-  const listenHref = primaryStreamingUrl(currentRelease) ?? "/music";
+const listenHref = socialLinks.spotify ?? "/music";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);

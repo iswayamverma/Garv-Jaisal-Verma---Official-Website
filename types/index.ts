@@ -9,6 +9,20 @@
 
 // --- Music (§22–24) ---------------------------------------------------
 
+/**
+ * A single track flattened out of its parent release, carrying the
+ * release's artwork/title/slug/date along with it. Used by the /music
+ * page's "Songs" tab, which lists every track across all releases in
+ * one place rather than grouped by album.
+ */
+export interface FlattenedTrack extends Track {
+  releaseId: string;
+  releaseSlug: string;
+  releaseTitle: string;
+  releaseArtwork?: string;
+  releaseDate: string;
+}
+
 export type ReleaseType = "album" | "single" | "collaboration";
 export type ReleaseStatus = "upcoming" | "released";
 

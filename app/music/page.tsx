@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Disc3 } from "lucide-react";
 import { releases } from "@/data/releases";
-import { getCurrentRelease, getReleasesByType, getAllCredits } from "@/lib/utils";
+import { getCurrentRelease, getReleasesByType, getAllCredits, getAllTracks } from "@/lib/utils";
 import { FeaturedRelease } from "@/components/music/FeaturedRelease";
-import { ReleaseGrid } from "@/components/music/ReleaseGrid";
+import { MusicTabs } from "@/components/music/MusicTabs";
 import { CreditsSection } from "@/components/music/CreditsSection";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -19,7 +19,7 @@ export default function MusicPage() {
   const featured = getCurrentRelease(releases);
   const albums = getReleasesByType(releases, "album");
   const singles = getReleasesByType(releases, "single");
-  const collaborations = getReleasesByType(releases, "collaboration");
+  const songs = getAllTracks(releases);
   const credits = getAllCredits(releases);
 
   return (
@@ -35,9 +35,7 @@ export default function MusicPage() {
       ) : (
         <>
           {featured ? <FeaturedRelease release={featured} /> : null}
-          <ReleaseGrid title="Albums" releases={albums} />
-          <ReleaseGrid title="Singles" releases={singles} />
-          <ReleaseGrid title="Collaborations" releases={collaborations} />
+          <MusicTabs albums={albums} singles={singles} songs={songs} />
           <CreditsSection credits={credits} />
         </>
       )}

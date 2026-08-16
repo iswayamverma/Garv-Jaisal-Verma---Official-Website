@@ -8,6 +8,6 @@ import type { SocialLinks } from "@/types";
 export const socialLinks: SocialLinks = {
   instagram: undefined,
   youtube: undefined,
-  spotify: undefined,
+  spotify: "https://open.spotify.com/artist/6XTCm0sfM2WmWBIg9PpVRv",
   appleMusic: undefined,
 };
