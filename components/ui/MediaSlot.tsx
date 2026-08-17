@@ -33,6 +33,8 @@ interface MediaSlotProps {
   sizes?: string;
   priority?: boolean;
   className?: string;
+  /** Extra classes for the image itself, e.g. to control crop position responsively. */
+  imageClassName?: string;
 }
 
 /**
@@ -55,6 +57,7 @@ export function MediaSlot({
   sizes = "100vw",
   priority = false,
   className,
+  imageClassName,
 }: MediaSlotProps) {
   const [failed, setFailed] = useState(false);
   const cloudConfigured = Boolean(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
@@ -94,7 +97,7 @@ export function MediaSlot({
         fill
         sizes={sizes}
         priority={priority}
-        className="object-cover"
+        className={cn("object-cover", imageClassName)}
         onError={() => setFailed(true)}
       />
     </div>

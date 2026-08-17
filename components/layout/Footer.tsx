@@ -5,9 +5,10 @@ import { socialLinks } from "@/data/social";
 
 const socialPlatforms = [
   { key: "instagram" as const, label: "Instagram" },
-  { key: "youtube" as const, label: "YouTube" },
+  { key: "facebook" as const, label: "Facebook" },
   { key: "spotify" as const, label: "Spotify" },
   { key: "appleMusic" as const, label: "Apple Music" },
+  { key: "youtube" as const, label: "YouTube Music" },
 ];
 
 export function Footer() {
@@ -41,6 +42,7 @@ export function Footer() {
               {activeSocials.map(({ key, label }) => (
                 <a
                   key={key}
+                  
                   href={socialLinks[key]}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -62,6 +64,7 @@ export function Footer() {
               <span key={link.href} className="flex items-center gap-2">
                 {index > 0 ? <span className="text-ash/40">|</span> : null}
                 <Link
+                
                   href={link.href}
                   className="transition-colors hover:text-ember focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember"
                 >

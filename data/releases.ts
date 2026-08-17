@@ -32,24 +32,29 @@ import type { Release } from "@/types";
 export const releases: Release[] = [
   {
     id: "r1",
-    slug: "midnight-frequencies",
-    title: "Midnight Frequencies",
+    slug: "a-girl-from-lahore",
+    title: "A Girl From Lahore",
     type: "album",
-    releaseDate: "2026-06-12",
-    shortDescription: "A nine-track journey through late-night city sounds.",
+    releaseDate: "2026-09-09",
+    artwork: "a-girl-from-lahore_epo8of",
+    shortDescription: "A silent confession of love across borders and self-doubt, told through music.",
     featured: true,
-    status: "released",
+    status: "upcoming",
     streamingLinks: {
       spotify: "https://open.spotify.com/album/example1",
     },
     tracks: [
-      { id: "t1", trackNumber: 1, title: "Neon Skyline", duration: "3:24" },
-      { id: "t2", trackNumber: 2, title: "Static & Silence", duration: "4:02" },
-      { id: "t3", trackNumber: 3, title: "Overpass", duration: "3:47" },
+      { id: "t1", trackNumber: 1, title: "Suna Hai Log Ussey", duration: "3:41" },
+      { id: "t2", trackNumber: 2, title: "Dark Contrast (coming soon on 9 Oct 2026)", duration: "4:08" },
+      { id: "t3", trackNumber: 3, title: "Ankhiya Udaasve (coming soon on 9 Nov 2026)", duration: "3:29" },
+      { id: "t4", trackNumber: 4, title: "Raqeeb Se (coming soon on 9 Dec 2026)", duration: "3:55" },
+      { id: "t5", trackNumber: 5, title: "Wo Raatein (coming soon on 9 Jan 2027)", duration: "4:12" },
+      { id: "t6", trackNumber: 6, title: "Milne Aa (Dariya) (coming soon on 9 Feb 2027)", duration: "3:33" },
+      { id: "t7", trackNumber: 7, title: "Soye Nahi (coming soon on 9 March 2027)", duration: "4:01" },
     ],
     credits: [
       { role: "Production", name: "Garv Jaisal Verma" },
-      { role: "Mixing", name: "Ravi Menon" },
+      { role: "Mixing", name: "Anirudha" },
     ],
   },
   {

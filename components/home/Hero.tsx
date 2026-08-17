@@ -16,12 +16,20 @@ export function Hero() {
     <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-ink">
       <div className="absolute inset-0">
         <MediaSlot
+          publicId={artist.heroImageMobile ?? artist.heroImage}
+          alt={`${artist.name} portrait`}
+          icon="portrait"
+          label="Artist Photo"
+          priority
+          className="size-full sm:hidden"
+        />
+        <MediaSlot
           publicId={artist.heroImage}
           alt={`${artist.name} portrait`}
           icon="portrait"
           label="Artist Photo"
           priority
-          className="size-full"
+          className="hidden size-full sm:block"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/10" />
       </div>

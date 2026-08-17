@@ -81,9 +81,10 @@ export interface LiveEvent {
 
 export interface SocialLinks {
   instagram?: string;
-  youtube?: string;
+  facebook?: string;
   spotify?: string;
   appleMusic?: string;
+  youtube?: string;
 }
 
 // --- Artist identity (§34) ------------------------------------------------
@@ -93,8 +94,10 @@ export interface ArtistProfile {
   profession: string[];
   shortBio: string;
   longBio: string;
-  /** Cloudinary public ID for the primary hero image. */
+  /** Cloudinary public ID for the primary hero image (tablet/desktop). */
   heroImage?: string;
+  /** Cloudinary public ID for a hero image composed specifically for narrow phone screens. Falls back to heroImage if unset. */
+  heroImageMobile?: string;
   /** Cloudinary public IDs for additional portraits/performance photos. */
   profileImages?: string[];
 }

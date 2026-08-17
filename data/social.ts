@@ -6,8 +6,9 @@ import type { SocialLinks } from "@/types";
  * filled in here, per "Hide unavailable platforms."
  */
 export const socialLinks: SocialLinks = {
-  instagram: undefined,
-  youtube: undefined,
+  instagram: "https://www.instagram.com/garv_jaisal_verman/?hl=en",
+  facebook: "https://www.facebook.com/garvjaisalverma",
   spotify: "https://open.spotify.com/artist/6XTCm0sfM2WmWBIg9PpVRv",
-  appleMusic: undefined,
+  appleMusic: "https://music.apple.com/us/artist/garv-jaisal-verma/1540739311",
+  youtube: "https://music.youtube.com/channel/UCc3TpE0gLsut0LrBQclMh5Q?si=P8_eMbysjMkxuHeX",
 };
