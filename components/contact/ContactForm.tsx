@@ -5,6 +5,7 @@ import { contactFormSchema } from "@/lib/validations/contact";
 import { INQUIRY_TYPES, type ContactApiResponse } from "@/types";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { cn } from "@/lib/utils";
+import { CustomSelect } from "@/components/contact/CustomSelect";
 
 type FormValues = {
   name: string;
@@ -155,26 +156,16 @@ export function ContactForm() {
 
         <Field label="Inquiry Type" error={fieldErrors.inquiryType}>
           {(id, describedBy) => (
-            <select
+            <CustomSelect
               id={id}
               name="inquiryType"
-              required
-              disabled={disabled}
               value={values.inquiryType}
-              onChange={(e) => update("inquiryType", e.target.value as FormValues["inquiryType"])}
-              aria-invalid={Boolean(fieldErrors.inquiryType)}
-              aria-describedby={describedBy}
-              className={inputClass}
-            >
-              <option value="" disabled>
-                Select one
-              </option>
-              {INQUIRY_TYPES.map((type) => (
-                <option key={type} value={type}>
-                  {type}
-                </option>
-              ))}
-            </select>
+              onChange={(val) => update("inquiryType", val as FormValues["inquiryType"])}
+              options={INQUIRY_TYPES}
+              disabled={disabled}
+              invalid={Boolean(fieldErrors.inquiryType)}
+              describedBy={describedBy}
+            />
           )}
         </Field>
 

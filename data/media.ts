@@ -40,5 +40,5 @@ export const mediaKit: MediaKit = {
   // raw-upload URL) — the Download EPK button switches from disabled to
   // linked automatically.
   epkUrl: undefined,
-  contactEmail: undefined,
+  contactEmail: "garvjaisalverma@gmail.com",
 };

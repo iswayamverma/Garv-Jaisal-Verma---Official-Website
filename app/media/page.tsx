@@ -62,7 +62,12 @@ export default function MediaPage() {
       <div className="flex flex-col gap-4 border-t border-paper/10 pt-12 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3 text-paper/85">
           <Mail className="size-5 text-ember" aria-hidden="true" />
-          <span className="text-sm">{contactEmail}</span>
+          <a
+            href={`mailto:${contactEmail}`}
+            className="text-sm underline decoration-ash/40 underline-offset-4 hover:text-ember hover:decoration-ember focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember"
+          >
+            {contactEmail}
+          </a>
         </div>
         <CtaLink href="/contact" variant="secondary" showArrow>
           Contact for Bookings

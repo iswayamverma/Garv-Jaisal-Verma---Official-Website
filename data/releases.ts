@@ -41,7 +41,7 @@ export const releases: Release[] = [
     featured: true,
     status: "upcoming",
     streamingLinks: {
-      spotify: "https://open.spotify.com/album/example1",
+      spotify: "https://open.spotify.com/artist/6XTCm0sfM2WmWBIg9PpVRv",
     },
     tracks: [
   { id: "t1", trackNumber: 1, title: "Suna Hai Log Ussey", duration: "3:41" },
