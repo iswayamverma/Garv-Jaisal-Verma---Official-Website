@@ -97,7 +97,8 @@ export function MediaSlot({
         fill
         sizes={sizes}
         priority={priority}
-        className={cn("object-cover", imageClassName)}
+        quality="auto"
+        className="object-cover"
         onError={() => setFailed(true)}
       />
     </div>

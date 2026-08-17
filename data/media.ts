@@ -14,7 +14,14 @@ import type { MediaKit } from "@/types";
 export const mediaKit: MediaKit = {
   shortBio: "[SHORT_BIO]",
   fullBio: "[LONG_BIO]",
-  photos: [],
+  photos: [
+    "media-image1_ogbgvz",
+    "media-image2_gtjcri",
+    "media-image3_nzzs1z",
+    "media-image4_mophjg",
+    "media-image5_jd0mjm",
+    "media-image6_rvp6ng",
+  ],
   // Reused as Home's featured Video section (§16) — hidden there when unset.
   videoUrl: undefined,
   credits: [],
