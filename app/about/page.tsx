@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { artist } from "@/data/artist";
 import { releases } from "@/data/releases";
-import { getLatestReleases, isPlaceholder } from "@/lib/utils";
+import { getLatestReleases } from "@/lib/utils";
 import { MediaSlot } from "@/components/ui/MediaSlot";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Container } from "@/components/ui/Container";
 import { ArtistIdentity } from "@/components/about/ArtistIdentity";
 import { ReleaseCard } from "@/components/music/ReleaseCard";
+import { AboutBio } from "@/components/about/AboutBio";
 
 export const metadata: Metadata = {
   title: "About",
@@ -16,7 +17,6 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const bioReady = !isPlaceholder(artist.longBio);
   const selectedWork = getLatestReleases(releases, 3);
 
   return (
@@ -24,21 +24,14 @@ export default function AboutPage() {
       <SectionHeading eyebrow="About" title={artist.name} as="h1" />
 
       <MediaSlot
+        publicId="media--media-coverage_rghdl5"
         alt={`${artist.name} portrait`}
         icon="portrait"
         label="Artist Photo"
         aspect="landscape"
       />
 
-      <div className="max-w-[65ch]">
-        {bioReady ? (
-          <p className="text-pretty text-lg leading-relaxed text-paper/85">{artist.longBio}</p>
-        ) : (
-          <p className="text-pretty text-lg italic leading-relaxed text-ash">
-            A full biography for {artist.name} is being written and will appear here soon.
-          </p>
-        )}
-      </div>
+      <AboutBio name={artist.name} bio={artist.longBio} />
 
       <ArtistIdentity />
 
