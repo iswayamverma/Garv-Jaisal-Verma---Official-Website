@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Mail } from "lucide-react";
 import { mediaKit } from "@/data/media";
 import { artist } from "@/data/artist";
-import { isPlaceholder } from "@/lib/utils";
 import { MediaSlot } from "@/components/ui/MediaSlot";
 import { VideoSlot } from "@/components/ui/VideoSlot";
 import { CtaLink } from "@/components/ui/CtaLink";
@@ -10,6 +9,8 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Container } from "@/components/ui/Container";
 import { CreditsSection } from "@/components/music/CreditsSection";
 import { PressCoverage } from "@/components/media/PressCoverage";
+import { PhotoLightbox } from "@/components/media/PhotoLightbox";
+import { BioSection } from "@/components/media/BioSection";
 
 export const metadata: Metadata = {
   title: "Media",
@@ -18,7 +19,6 @@ export const metadata: Metadata = {
 };
 
 export default function MediaPage() {
-  const bioReady = !isPlaceholder(mediaKit.fullBio);
   const photoSlots = Array.from({ length: 6 }, (_, i) => mediaKit.photos[i]);
   const contactEmail = mediaKit.contactEmail || "[BOOKING_EMAIL]";
 
@@ -41,30 +41,11 @@ export default function MediaPage() {
         }
       />
 
-      <div className="max-w-[65ch]">
-        {bioReady ? (
-          <p className="text-pretty text-lg leading-relaxed text-paper/85">{mediaKit.fullBio}</p>
-        ) : (
-          <p className="text-pretty text-lg italic leading-relaxed text-ash">
-            A full press biography for {artist.name} is coming soon.
-          </p>
-        )}
-      </div>
+      <BioSection name={artist.name} bio={mediaKit.fullBio} />
 
       <div>
         <SectionHeading title="Photos" as="h2" className="mb-10" />
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6">
-          {photoSlots.map((publicId, i) => (
-            <MediaSlot
-              key={i}
-              publicId={publicId}
-              alt={`${artist.name} press photo ${i + 1}`}
-              icon="photo"
-              label="Press Photo"
-              aspect="portrait"
-            />
-          ))}
-        </div>
+        <PhotoLightbox photos={photoSlots} altPrefix={artist.name} />
       </div>
 
       {mediaKit.videoUrl ? (
