@@ -40,6 +40,9 @@ export const metadata: Metadata = {
     template: `%s — ${SITE_NAME}`,
   },
   description,
+  icons: {
+    icon: "https://res.cloudinary.com/dnamu1f9w/image/upload/c_fill,g_face,w_512,h_512/v1786907591/artist-potrait_bb437b.png",
+  },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
