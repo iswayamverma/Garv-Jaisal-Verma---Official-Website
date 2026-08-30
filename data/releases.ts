@@ -26,7 +26,7 @@ import type { Release } from "@/types";
  *   status: "upcoming",
  *   streamingLinks: { spotify: "[SPOTIFY_URL]" },
  *   tracks: [{ id: "t1", trackNumber: 1, title: "[TRACK_TITLE]" }],
- *   credits: [{ role: "Production", name: "Garv Jaisal Verma" }],
+ *   credits: [{ role: "Production", name: "GJ Verman" }],
  * }
  */
 export const releases: Release[] = [
@@ -53,7 +53,7 @@ export const releases: Release[] = [
   { id: "t12", trackNumber: 7, title: "Soye Nahi (coming soon on 9 March 2027)", duration: "4:01" },
 ],
     credits: [
-      { role: "Production", name: "Garv Jaisal Verma" },
+      { role: "Production", name: "GJ Verman" },
       { role: "Mixing", name: "Anirudha" },
     ],
   },
@@ -70,7 +70,7 @@ export const releases: Release[] = [
     spotify: "https://open.spotify.com/track/3YZtgZ1342ihQpi0pIkSNK?si=0c1e780f9d934894",
   },
   tracks: [{ id: "t4", trackNumber: 1, title: "Khoobsurat Ho Tum", duration: "3:12" }],
-  credits: [{ role: "Production", name: "Garv Jaisal Verma" }],
+  credits: [{ role: "Production", name: "GJ Verman" }],
   },
   {
   id: "r3",
@@ -99,7 +99,7 @@ export const releases: Release[] = [
     spotify: "https://open.spotify.com/track/6Vnu4wuOqGiuYySQW84Gyz?si=4fd3201bb9f14788",
   },
   tracks: [{ id: "t6", trackNumber: 1, title: "Kayi Sawan", duration: "3:38" }],
-  credits: [{ role: "Production", name: "Garv Jaisal Verma" }],
+  credits: [{ role: "Production", name: "GJ Verman" }],
   },
   {
   id: "r5",

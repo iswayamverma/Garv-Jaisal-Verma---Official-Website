@@ -1,7 +1,7 @@
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://www.garvjaisalverma.com";
 
-export const SITE_NAME = "Garv Jaisal Verma";
+export const SITE_NAME = "GJ Verman";
 export const SITE_TAGLINE = "Singer · Composer · Producer";
 
 /**

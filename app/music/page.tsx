@@ -11,7 +11,7 @@ import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = {
   title: "Music",
-  description: "Albums, singles and collaborations from Garv Jaisal Verma — Singer, Composer, Producer.",
+  description: "Albums, singles and collaborations from GJ Verman — Singer, Composer, Producer.",
   alternates: { canonical: "/music" },
 };
 

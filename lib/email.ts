@@ -19,7 +19,7 @@ export interface ContactEmailPayload {
 export async function sendContactEmail(payload: ContactEmailPayload): Promise<void> {
   const apiKey = process.env.EMAIL_PROVIDER_API_KEY;
   const to = process.env.CONTACT_TO_EMAIL || "[BOOKING_EMAIL]";
-  const from = process.env.CONTACT_FROM_EMAIL || "Garv Jaisal Verma Site <onboarding@resend.dev>";
+  const from = process.env.CONTACT_FROM_EMAIL || "GJ Verman Site <onboarding@resend.dev>";
 
   if (!apiKey) {
     // No credential configured (e.g. local dev without .env.local). The

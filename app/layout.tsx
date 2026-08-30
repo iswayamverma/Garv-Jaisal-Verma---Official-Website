@@ -31,7 +31,7 @@ const spaceMono = Space_Mono({
 });
 
 const description =
-  "Official website for Garv Jaisal Verma — Singer, Composer, Producer. Music, live dates, media kit and contact.";
+  "Official website for GJ Verman — Singer, Composer, Producer. Music, live dates, media kit and contact.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

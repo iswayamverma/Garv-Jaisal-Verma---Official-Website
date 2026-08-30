@@ -1,5 +1,5 @@
 /**
- * Shared content types for the Garv Jaisal Verma site.
+ * Shared content types for the GJ Verman site.
  *
  * These mirror the data models defined in PDD v1.3 §22–24 (Release/Track/
  * Credit), §29 (Live), §30 (Social) and §34 (Artist). Keeping them here

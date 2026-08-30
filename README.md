@@ -1,4 +1,4 @@
-# Garv Jaisal Verma — Official Artist Website
+# GJ Verman — Official Artist Website
 
 Built from `Garv_Jaisal_Verma_PDD_final.pdf` (v1.3). Next.js 16 (App Router) ·
 React 19 · TypeScript (strict) · Tailwind CSS v4 · Zod v4 · next-cloudinary.

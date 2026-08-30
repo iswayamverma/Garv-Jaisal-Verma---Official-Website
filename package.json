@@ -2,7 +2,7 @@
   "name": "garv-jaisal-verma-website",
   "version": "1.0.0",
   "private": true,
-  "description": "Official artist website for Garv Jaisal Verma — Singer, Composer, Producer. Built from PDD v1.3.",
+  "description": "Official artist website for GJ Verman — Singer, Composer, Producer. Built from PDD v1.3.",
   "engines": {
     "node": ">=20.9.0"
   },
