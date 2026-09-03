@@ -46,8 +46,6 @@ export function ContactForm() {
 
     const result = contactFormSchema.safeParse(values);
     if (!result.success) {
-      console.log("COMPANY FIELD VALUE:", JSON.stringify(values.company));
-console.log("COMPANY FIELD LENGTH:", values.company.length);
       const errors: Record<string, string> = {};
       for (const issue of result.error.issues) {
         const key = issue.path[0] !== undefined ? String(issue.path[0]) : "form";
