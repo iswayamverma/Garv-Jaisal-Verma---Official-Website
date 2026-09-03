@@ -62,6 +62,7 @@ export async function sendContactEmail(payload: ContactEmailPayload): Promise<vo
   });
 
   if (!response.ok) {
-    throw new Error(`Email provider responded with HTTP ${response.status}`);
+  const errorBody = await response.text();
+  throw new Error(`Email provider responded with HTTP ${response.status}: ${errorBody}`);
   }
 }
