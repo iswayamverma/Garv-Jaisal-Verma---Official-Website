@@ -46,6 +46,8 @@ export function ContactForm() {
 
     const result = contactFormSchema.safeParse(values);
     if (!result.success) {
+      console.log("COMPANY FIELD VALUE:", JSON.stringify(values.company));
+console.log("COMPANY FIELD LENGTH:", values.company.length);
       const errors: Record<string, string> = {};
       for (const issue of result.error.issues) {
         const key = issue.path[0] !== undefined ? String(issue.path[0]) : "form";
@@ -206,19 +208,21 @@ export function ContactForm() {
         )}
       </Field>
 
-      {/* Honeypot — hidden from sighted and AT users, left empty by real visitors. */}
-      <div aria-hidden="true" className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden">
-        <label htmlFor="company">Company</label>
-        <input
-          id="company"
-          name="company"
-          type="text"
-          tabIndex={-1}
-          autoComplete="off"
-          value={values.company}
-          onChange={(e) => update("company", e.target.value)}
-        />
-      </div>
+      {/* Honeypot — hidden from sighted and AT users, left empty by real visitors.
+    Field name deliberately avoids "company"/"organization" so browsers
+    don't autofill it and break validation. */}
+<div aria-hidden="true" style={{ display: "none" }}>
+  <label htmlFor="hp_field_x92">Leave this field blank</label>
+  <input
+    id="hp_field_x92"
+    name="hp_field_x92"
+    type="text"
+    tabIndex={-1}
+    autoComplete="off"
+    value={values.company}
+    onChange={(e) => update("company", e.target.value)}
+  />
+</div>
 
       <div>
         <CtaLink type="submit" disabled={disabled}>
