@@ -89,7 +89,7 @@ export function ContactForm() {
       } else {
         setStatus("error");
         setStatusMessage(
-          "Something went wrong sending your message. Please try again, or email [BOOKING_EMAIL] directly."
+          `Something went wrong sending your message. Please try again, or email ${process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "us"} directly.`
         );
       }
     } catch {
