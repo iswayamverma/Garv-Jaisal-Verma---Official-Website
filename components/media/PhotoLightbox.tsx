@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { TouchEvent } from "react";
 import { CldImage } from "next-cloudinary";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -15,10 +15,15 @@ export function PhotoLightbox({ photos, altPrefix }: PhotoLightboxProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
-  const close = () => setOpenIndex(null);
-  const showPrev = () =>
-    setOpenIndex((i) => (i === null ? null : (i - 1 + photos.length) % photos.length));
-  const showNext = () => setOpenIndex((i) => (i === null ? null : (i + 1) % photos.length));
+  const close = useCallback(() => setOpenIndex(null), []);
+  const showPrev = useCallback(
+    () => setOpenIndex((i) => (i === null ? null : (i - 1 + photos.length) % photos.length)),
+    [photos.length]
+  );
+  const showNext = useCallback(
+    () => setOpenIndex((i) => (i === null ? null : (i + 1) % photos.length)),
+    [photos.length]
+  );
 
   useEffect(() => {
     if (openIndex === null) return;
@@ -33,7 +38,7 @@ export function PhotoLightbox({ photos, altPrefix }: PhotoLightboxProps) {
       window.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = "";
     };
-  }, [openIndex]);
+  }, [close, openIndex, showNext, showPrev]);
 
   const onTouchStart = (event: TouchEvent) => {
     const touch = event.touches[0];
@@ -46,7 +51,11 @@ export function PhotoLightbox({ photos, altPrefix }: PhotoLightboxProps) {
     if (!touch) return;
     const deltaX = touch.clientX - touchStartX;
     if (Math.abs(deltaX) > 50) {
-      deltaX > 0 ? showPrev() : showNext();
+      if (deltaX > 0) {
+        showPrev();
+      } else {
+        showNext();
+      }
     }
     setTouchStartX(null);
   };

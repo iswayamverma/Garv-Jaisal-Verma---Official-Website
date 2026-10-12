@@ -37,6 +37,8 @@ interface MediaSlotProps {
   imageClassName?: string;
 }
 
+const defaultSizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw";
+
 /**
  * A single media slot: either a real Cloudinary-served image, or the
  * site's placeholder treatment.
@@ -54,7 +56,7 @@ export function MediaSlot({
   label,
   icon = "photo",
   aspect = "square",
-  sizes = "100vw",
+  sizes = defaultSizes,
   priority = false,
   className,
   imageClassName,
@@ -94,11 +96,12 @@ export function MediaSlot({
       <CldImage
         src={publicId as string}
         alt={alt}
-        fill
+        width={1200}
+        height={1200}
         sizes={sizes}
         priority={priority}
         quality="auto"
-        className="object-cover"
+        className={cn("h-full w-full object-cover", imageClassName)}
         onError={() => setFailed(true)}
       />
     </div>

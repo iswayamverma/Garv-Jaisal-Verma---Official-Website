@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Mail } from "lucide-react";
 import { mediaKit } from "@/data/media";
 import { artist } from "@/data/artist";
-import { MediaSlot } from "@/components/ui/MediaSlot";
 import { VideoSlot } from "@/components/ui/VideoSlot";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";

@@ -11,22 +11,19 @@ export function AboutPreview() {
     <section className="bg-charcoal py-24 sm:py-32">
       <Container className="grid grid-cols-1 items-center gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
         <div>
-          {/* Portrait, framed with an offset ember rule behind it — the
-              section's one signature move, echoing a studio print mount.
-              This inner wrapper is sized to the image ONLY, so the offset
-              border can't stretch down into the caption below it. */}
           <div className="relative">
             <div
               aria-hidden
               className="absolute -bottom-4 -right-4 h-full w-full border border-ember-deep/60"
             />
-            <div className="relative">
+            <div className="soft-panel relative overflow-hidden rounded-[1.6rem] p-3">
               <MediaSlot
                 publicId={artist.profileImages?.[0]}
                 alt={`${artist.name} portrait`}
                 icon="portrait"
                 label="Artist Portrait"
                 aspect="portrait"
+                className="rounded-[1.1rem]"
               />
             </div>
           </div>

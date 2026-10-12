@@ -22,20 +22,23 @@ export function CurrentRelease() {
     <section className="bg-ink py-24 sm:py-32">
       <Container>
         <SectionHeading eyebrow="Current Release" title={release.title} className="mb-12" />
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-          <MediaSlot
-            publicId={release.artwork}
-            alt={`${release.title} artwork`}
-            icon="artwork"
-            label="Album Artwork"
-            aspect="square"
-          />
+        <div className="soft-panel grid grid-cols-1 gap-8 overflow-hidden rounded-[1.6rem] p-5 sm:p-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:p-10">
+          <div className="overflow-hidden rounded-[1.1rem] border border-paper/10 bg-black/10">
+            <MediaSlot
+              publicId={release.artwork}
+              alt={`${release.title} artwork`}
+              icon="artwork"
+              label="Album Artwork"
+              aspect="square"
+              className="h-full"
+            />
+          </div>
           <div className="flex flex-col justify-center gap-5">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-ember">
+            <span className="inline-flex w-fit items-center rounded-full border border-ember/35 bg-ember-soft px-3 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-ember">
               {isUpcoming ? "Coming Soon" : "Out Now"} · {formatDate(release.releaseDate)}
             </span>
             {release.shortDescription ? (
-              <p className="text-pretty text-lg leading-relaxed text-paper/85">
+              <p className="text-pretty text-lg leading-relaxed text-paper/85 sm:text-xl">
                 {release.shortDescription}
               </p>
             ) : null}

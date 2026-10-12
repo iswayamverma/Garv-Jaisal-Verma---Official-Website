@@ -1,27 +1,14 @@
 @import "tailwindcss";
 
-/*
- * Design tokens — Tailwind v4 CSS-first configuration (PDD §4: "Do not
- * generate a tailwind.config.js/.ts file"). Every variable below becomes a
- * matching utility automatically (--color-ember → bg-ember/text-ember/etc,
- * --font-display → font-display).
- *
- * Palette: a warm near-black stage/studio backdrop with a single muted
- * antique-gold accent — deliberately warmer and more restrained than a
- * bright neon/vermilion accent, closer to brass, tape saturation and
- * amber stage lighting than to a "premium" gold cliché. Per PDD §9, this
- * is a neutral fallback: swap `--color-ember` for a tone pulled from real
- * artwork once it exists, and every button, link and focus ring updates
- * with it.
- */
 @theme {
-  --color-ink: #0b0a08;
+  --color-ink: #090807;
   --color-charcoal: #17140f;
-  --color-paper: #f4f0e6;
-  --color-ash: #8d8779;
-  --color-ember: #c9974c;
-  --color-ember-light: #ddb26f;
-  --color-ember-deep: #8f6b34;
+  --color-paper: #f5f0e8;
+  --color-ash: #beb3a3;
+  --color-ember: #d1a15f;
+  --color-ember-light: #e3c08d;
+  --color-ember-deep: #9b6d31;
+  --color-ember-soft: rgba(209, 161, 95, 0.14);
 
   --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
@@ -40,16 +27,30 @@
 
   html {
     scroll-behavior: smooth;
-    /* Keeps focused/anchored content clear of the sticky header (WCAG 2.2
-       SC 2.4.11 — content must not be entirely hidden by fixed elements). */
     scroll-padding-top: 6rem;
   }
 
   body {
     background-color: var(--color-ink);
+    background-image:
+      radial-gradient(circle at top, rgba(209, 161, 95, 0.14), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(209, 161, 95, 0.08), transparent 28%),
+      linear-gradient(180deg, #090807 0%, #120f0c 100%);
     color: var(--color-paper);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  a,
+  button {
+    transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease,
+      transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
   }
 
   ::selection {
@@ -68,12 +69,15 @@
   h4 {
     font-family: var(--font-display);
     font-weight: 500;
+    letter-spacing: -0.04em;
   }
 
-  /* Numerals (track durations, event dates) get tabular mono figures so
-     lists stay aligned — a small nod to the "producer" side of the site. */
   .font-mono {
     font-variant-numeric: tabular-nums;
+  }
+
+  section {
+    position: relative;
   }
 }
 
@@ -84,6 +88,25 @@
 
   .text-pretty {
     text-wrap: pretty;
+  }
+
+  .soft-panel {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+  }
+
+  .hero-glow {
+    background:
+      radial-gradient(circle at center, rgba(209, 161, 95, 0.24), transparent 55%),
+      linear-gradient(to right, rgba(9, 8, 7, 0.25), rgba(9, 8, 7, 0.05));
+    filter: blur(0.5px);
+  }
+
+  .music-card {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.014);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
   }
 }
 

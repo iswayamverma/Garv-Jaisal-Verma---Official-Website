@@ -59,6 +59,7 @@ export function CustomSelect({
         onChange={(e) => onChange(e.target.value)}
         required
         disabled={disabled}
+        aria-invalid={invalid}
         aria-hidden="true"
         tabIndex={-1}
         className="pointer-events-none absolute size-0 opacity-0"
@@ -78,7 +79,6 @@ export function CustomSelect({
         disabled={disabled}
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-invalid={invalid}
         aria-describedby={describedBy}
         onClick={() => setOpen((v) => !v)}
         className={cn(

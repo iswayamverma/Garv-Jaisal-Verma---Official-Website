@@ -49,7 +49,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   aria-label={label}
                   title={label}
-                  className="flex size-9 items-center justify-center rounded-full border border-paper/30 text-paper/80 transition-colors hover:border-ember hover:text-ember focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember"
+                  className="flex size-9 items-center justify-center rounded-full border border-paper/20 bg-paper/[0.02] text-paper/80 transition-colors hover:border-ember hover:bg-ember/10 hover:text-ember focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember"
                 >
                   <Icon className="size-4" aria-hidden="true" />
                 </a>

@@ -70,7 +70,7 @@ export function Header() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300 ease-out",
-        scrolled || open ? "bg-ink/95 backdrop-blur-sm" : "bg-transparent",
+        scrolled || open ? "border-b border-paper/10 bg-ink/80 shadow-[0_12px_32px_rgba(0,0,0,0.28)] backdrop-blur-md" : "bg-transparent",
         hidden && !open ? "-translate-y-full" : "translate-y-0"
       )}
     >
@@ -91,7 +91,7 @@ export function Header() {
                 href={link.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "text-xs font-medium uppercase tracking-[0.2em] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember",
+                  "relative text-xs font-medium uppercase tracking-[0.2em] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember",
                   active ? "text-ember" : "text-paper/80 hover:text-paper"
                 )}
               >
